@@ -27,7 +27,7 @@ class NavbarView extends GetView<NavbarController> {
           bottomNavigationBar: BottomNavigationBar(
               onTap: controller.changeTabIndex,
               currentIndex: controller.tabIndex,
-              selectedItemColor: Color(0xff0249FE),
+              selectedItemColor: Color(0xff0c2568),
               unselectedItemColor: Colors.grey.shade300,
               type: BottomNavigationBarType.fixed,
               items: [
