@@ -42,7 +42,7 @@ class HomeView extends GetView<HomeController> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: const [
                         Text(
-                          "Welcome, tes",
+                          "Welcome, tes hahahah",
                           style: TextStyle(
                               color: Color(0xff0c2568),
                               fontSize: 20,
