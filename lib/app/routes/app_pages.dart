@@ -30,7 +30,7 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.ASET,
-      page: () => const AsetView(),
+      page: () => AsetView(),
       binding: AsetBinding(),
     ),
     GetPage(

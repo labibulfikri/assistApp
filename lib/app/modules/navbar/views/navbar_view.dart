@@ -17,7 +17,7 @@ class NavbarView extends GetView<NavbarController> {
           body: SafeArea(
             child: IndexedStack(
               index: controller.tabIndex,
-              children: const [
+              children: [
                 HomeView(),
                 AsetView(),
                 AkunView(),

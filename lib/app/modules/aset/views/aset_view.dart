@@ -1,3 +1,4 @@
+import 'package:assist_apps/app/modules/aset/models/aset_model.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -5,7 +6,8 @@ import 'package:get/get.dart';
 import '../controllers/aset_controller.dart';
 
 class AsetView extends GetView<AsetController> {
-  const AsetView({Key? key}) : super(key: key);
+  AsetView({Key? key}) : super(key: key);
+  final controller = Get.put(AsetController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,6 +54,69 @@ class AsetView extends GetView<AsetController> {
                         ],
                       ),
                     ),
+                  ),
+                ),
+                Container(
+                  width: Get.width,
+                  height: 500,
+                  child: FutureBuilder<List<AsetModal>>(
+                    future: controller.GetAset(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+
+                      if (!snapshot.hasData) {
+                        return const Center(
+                          child: Text("Tidak ada data ..."),
+                        );
+                      }
+
+                      return Container(
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(30),
+                            topRight: Radius.circular(30),
+                          ),
+                        ),
+                        child: ListView.builder(
+                          itemCount: snapshot.data!.length,
+                          itemBuilder: (context, index) {
+                            AsetModal asetM = snapshot.data![index];
+
+                            return Column(
+                              children: [
+                                ListTile(
+                                  leading: Text("${index + 1}",
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.grey.shade700)),
+                                  title: Text(
+                                    "${asetM.idnya} ",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.grey.shade700),
+                                  ),
+                                  subtitle: Text("${asetM.lokasiPencatatan}"),
+                                  // onTap: () {
+                                  //   // Get.to(DetailPageView(),
+                                  //   //     arguments: "${jadwal.perkaraId}");
+                                  //   Get.toNamed(Routes.DETAIL_PAGE,
+                                  //       arguments: "${aset.perkaraId}");
+                                  // },
+                                ),
+                                Divider(
+                                  color: Colors.grey,
+                                ),
+                              ],
+                            );
+                          },
+                        ),
+                      );
+                    },
                   ),
                 ),
               ],
