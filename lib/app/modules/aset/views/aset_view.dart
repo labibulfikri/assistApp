@@ -95,7 +95,7 @@ class AsetView extends GetView<AsetController> {
                                           fontWeight: FontWeight.bold,
                                           color: Colors.grey.shade700)),
                                   title: Text(
-                                    "${asetM.idnya} ",
+                                    "${asetM.registerBaru} ",
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
                                         color: Colors.grey.shade700),
